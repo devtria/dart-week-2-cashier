@@ -14,7 +14,7 @@ Program kasir ini dirancang untuk menghitung diskon dan total pembayaran pelangg
 | BR-02 | Member mendapat tambahan diskon 5%, hanya jika BR-01 terpenuhi. |
 | BR-03 | Total potongan maksimal Rp25.000. |
 
-Analisis dilakukan menggunakan empat konsep *Computational Thinking*: **Decomposition**, **Pattern Recognition**, **Abstraction**, dan **Algorithm Design**. Hasil analisis ini menjadi rancangan sebelum logika diimplementasikan ke dalam Dart.
+Analisis dilakukan menggunakan empat konsep *Computational Thinking*: **Decomposition**, **Pattern Recognition**, **Abstraction**, dan **Algorithm**.
 
 ## 1. Decomposition (Memecah Masalah)
 
@@ -24,17 +24,17 @@ Masalah utama dipecah menjadi tiga fungsi sesuai petunjuk soal.
 
 Menentukan persentase diskon berdasarkan total belanja dan status member.
 
-- Belanja di bawah Rp100.000: diskon 0%.
+- Belanja di bawah Rp100.000: tidak mendapat diskon.
 - Belanja minimal Rp100.000 dan bukan member: diskon 10%.
 - Belanja minimal Rp100.000 dan member: diskon 15% (10% + tambahan 5%).
 
-### 1.2 `hitungPotongan()`
+### 1.2 `hitungPotongan`
 
 Menghitung nominal potongan dari total belanja dan persentase diskon. Setelah itu, potongan dibatasi agar tidak melebihi Rp25.000.
 
 Contoh: 15% dari Rp300.000 adalah Rp45.000. Karena batas maksimal potongan Rp25.000, potongan yang digunakan adalah Rp25.000.
 
-### 1.3 `hitungTotalBayar()`
+### 1.3 `hitungTotalBayar`
 
 Menghitung total yang harus dibayar setelah potongan diterapkan.
 
@@ -44,7 +44,7 @@ Menghitung total yang harus dibayar setelah potongan diterapkan.
 totalBayar = totalBelanja - potongan
 ```
 
-## 2. Pattern Recognition (Mengenali Pola)
+## 2. Pattern Recognition
 
 Pola yang ditemukan dari business rule:
 
@@ -54,13 +54,13 @@ Pola yang ditemukan dari business rule:
 | Belanja minimal Rp100.000, bukan member | 10% |
 | Belanja minimal Rp100.000, member | 15% |
 
-Hal penting yang perlu diperhatikan:
+catatan:
 
 1. Status member hanya berpengaruh jika total belanja minimal Rp100.000.
 2. Nominal potongan tidak boleh melebihi Rp25.000, berapa pun hasil perhitungan diskon awalnya.
 3. Total pembayaran selalu dihitung dengan mengurangi total belanja menggunakan potongan akhir.
 
-## 3. Abstraction (Mengambil Informasi Penting)
+## 3. Abstraction
 
 Program hanya membutuhkan data yang relevan untuk menghitung pembayaran.
 
@@ -74,7 +74,7 @@ Program hanya membutuhkan data yang relevan untuk menghitung pembayaran.
 
 Untuk skenario pada soal, nominal rupiah berupa bilangan bulat sehingga `int` dapat digunakan untuk nilai uang. Data seperti nama pelanggan, daftar barang, dan metode pembayaran tidak diperlukan karena tidak termasuk aturan yang diminta.
 
-## 4. Algorithm Design (Merancang Algoritma)
+## 4. Algorithm
 
 ### 4.1 Menentukan persentase diskon
 
@@ -134,7 +134,4 @@ Control flow mengatur jalannya program berdasarkan kondisi dan urutan instruksi.
 - **`if-else` bertingkat:** menentukan diskon berdasarkan total belanja dan status member.
 - **Percabangan batas potongan:** memeriksa apakah potongan awal melebihi Rp25.000.
 - **Urutan proses:** total pembayaran dihitung setelah potongan akhir diketahui.
-
-## Kesimpulan
-
-Analisis ini memecah proses kasir menjadi tiga fungsi, mengenali pola diskon dan batas potongan, memilih data yang diperlukan, serta menyusun algoritma perhitungan secara berurutan. Rancangan ini dapat digunakan sebagai acuan untuk mengimplementasikan program Dart dan menguji hasilnya menggunakan empat skenario yang tersedia.
+perhitungan secara berurutan. Rancangan ini dapat digunakan sebagai acuan untuk mengimplementasikan program Dart dan menguji hasilnya menggunakan empat skenario yang tersedia.
